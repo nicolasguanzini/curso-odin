@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Etch-Sketch</title>
+</head>
+<body>
+    <div id="contenedorPrincipal">
+        <header class="encabezado">
+            <h1>Etch a Sketch</h1>
+            <nav class="navegacion"></nav>
+        </header>
+        <main>
+            <div id="contenedorCuadraditos"></div>
+            <div class="settings">
+                <div class="elegirColor">Elegir color</div>
+                <input type="color" id="colorPicker" value="#333333">
+                <button class="reset">Reset</button>
+                <button onclick="nuevoTamano()">Ingresar nuevo Tamaño</button>
+                
+                <button onclick="cambiarColor('#fff')">Goma de Borrar</button>
+                <button onclick="cambiarColor('#000')">Lapiz Negro</button>
+            </div>
+            
+        </main>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+}
+
+main{
+    display:flex;
+    width: 90%;
+    margin: auto;
+}
+
+#contenedorCuadraditos{
+    width: 500px;
+    height: 500px;
+    display: grid;
+    margin-left: 80px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.settings{
+    margin-left: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.settings button{
+    display:block;
+    padding:15px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border:none;
+    cursor: pointer;
+}
+
+.settings button:hover{
+    background-color: rgb(222, 222, 222);
+}
+
+.settings button:active{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px inset;
+}
+
+.settings input{
+    width: 50%;
+    height: 40px;
+    margin-right:0;
+    margin-left: auto;
+    margin-top:0;
+    margin-bottom:0;
+}
+
+.elegirColor{
+    margin-right:0;
+    margin-left: auto;
+    margin-top:5px;
+    margin-bottom:5px;
+
+}
+
+.encabezado{
+    background-color: black;
+    margin:0;
+    padding:10px;
+    margin-bottom: 10px;
+}
+
+.encabezado h1{
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}

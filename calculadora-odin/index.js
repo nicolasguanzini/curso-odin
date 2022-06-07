@@ -3,6 +3,7 @@ const display = document.getElementById("display");
 let primerNumero = 0;
 let segundoNumero = 0;
 let operadoractual = "";
+let pasoActual = 1;
 
 function handleClick(boton){
   if(isanumber(boton)){
@@ -42,9 +43,6 @@ function multiplicar(numero1, numero2){
     return numero1 * numero2;
 }
 function dividir(numero1, numero2){
-    if(numero2 == 0){
-        return null;
-    }
     return numero1 / numero2;
 }
 
@@ -56,32 +54,58 @@ function isanumber(boton){
 }
 
 function numeros(numero){
-    if(primerNumero == 0){
+    if(pasoActual === 2){
+        display.textContent === "0";
+        actualizarPaso();
+    }
+    if(display.textContent == "0"){
         display.textContent = numero;
-        primerNumero = parseInt(display.textContent);
-    }else if(primerNumero != 0 && segundoNumero == 0){
+    }else{
         display.textContent = display.textContent + numero;
     }
 }
 
 function operadores(operador){
-    if(operadoractual !== "") evaluar();
-    primerNumero = display.textContent;
-    operadoractual = operador;
-}
-
-function evaluar(){
-    if(operadoractual == "/" && display.textContent == "0"){
-        alert("No se puede dividir por cero");
-        return;
+    switch(pasoActual){
+        case 1:
+            primerNumero = parseInt(display.textContent);
+            operadoractual = operador;
+            actualizarPaso();
+        break;
+        case 2:
+            
+        break;
+        case 3:
+            segundoNumero = parseInt(display.textContent);
+            display.textContent = operate(operador, primerNumero, segundoNumero);
+            primerNumero = parseInt(display.textContent);
+            segundoNumero = 0;
+            operadoractual = operador;
+        break;
     }
-    segundoNumero = display.textContent;
-    display.textContent = redondear(
-        operate(operadoractual, primerNumero, segundoNumero)
-    );
-    operadoractual = "";
 }
 
 function redondear(number) {
     return Math.round(number * 1000) / 1000
   }
+
+//Maquina de estados
+function actualizarPaso(){
+    switch(pasoActual){
+        case 1: // Paso inicial - todo en cero y operador en nada
+            if(primerNumero !== 0 && segundoNumero === 0 && operadoractual !== ""){
+                pasoActual = 2;
+            }
+        break;
+        case 2: 
+                pasoActual = 3;
+        break;
+        case 3: //Escribo un segundo numero y apreto el operador de nuevo
+            if(primerNumero !== 0 && segundoNumero !== 0 && operadoractual !== ""){
+                pasoActual = 1;
+            }
+        break;
+        default:
+        break;
+    }
+}

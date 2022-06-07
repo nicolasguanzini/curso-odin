@@ -1,0 +1,111 @@
+body{
+    background-color: #00869b;
+    font-family: Orbitron, monospace;
+}
+#calcu{
+    max-width: 350px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.col-6, .col-3, .col-4 {
+    border-collapse: collapse;
+    background-color: #FFFFFF;
+}
+
+.cero{
+    background-color: #FFFFFF;
+    border-radius: 0 0 0 15px;
+}
+.col-9{
+    padding: 0;
+}
+.row{
+    height: 70px;
+    width: 100%;
+    margin: auto;
+}
+.col-6:hover{
+    border:solid 1px rgb(54, 54, 54)!important;
+}
+.col-3:hover{
+    border:solid 1px rgb(54, 54, 54)!important;
+}
+.col-4:hover{
+    border:solid 1px rgb(54, 54, 54)!important;
+}
+.cero:hover{
+    border:solid 1px rgb(54, 54, 54)!important;
+}
+button{
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color:black;
+    font-weight: bold;
+}
+button:hover{
+    color: gray;
+}
+#display{
+    width: 100%;
+    height: 100%;
+    border: none;
+    text-align: right;
+    resize: none;
+    padding-top: 20px;
+    font-family: Orbitron, monospace;
+    font-size: 1.5rem;
+    background-color: #222222;
+    color:rgb(211, 211, 211);
+}
+.pantalla2{
+    height: 60px!important;
+    border: none;
+    font-size: 1.3rem;
+}
+.pantallass{
+    border: none;
+    border-radius: 10px 10px 0 0;
+    background-color: #222222;
+
+}
+.ac{
+    background-color: #9b1818;
+    font-size: 1.2rem;
+}
+.igual{
+    background-color: #FE7C4A;
+    font-size: 1.6rem;
+    font-weight: bold;
+    border-radius: 0 0 15px 0;
+}
+.sign{
+    background-color: #E5E5E5;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.ACbutton{
+    color: white;
+}
+.igualBtn{
+    color: white;
+}
+.bordeL{
+    border-right: solid 0.5px rgb(145, 145, 145);
+    border-bottom: solid 0.5px rgb(145, 145, 145);
+}
+.bordeC{
+    border-right: solid 0.5px rgb(145, 145, 145);
+    border-bottom: solid 0.5px rgb(145, 145, 145);
+    border-top: solid 0.5px rgb(145, 145, 145);
+}
+#firma{
+font-family: Alegreya, serif;
+text-align: center;
+color: #dedede;
+font-weight: lighter;
+margin-top: 10px;
+font-size: 0.9rem;
+}

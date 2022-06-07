@@ -59,16 +59,29 @@ function numeros(numero){
     if(primerNumero == 0){
         display.textContent = numero;
         primerNumero = parseInt(display.textContent);
-    }else if(primerNumero != 0 && segundoNumero ==0){
+    }else if(primerNumero != 0 && segundoNumero == 0){
         display.textContent = display.textContent + numero;
     }
 }
 
 function operadores(operador){
-    if(operador == "AC"){
-        display.textContent = "0";
-        primerNumero = 0;
-        segundoNumero = 0;
-        operadoractual = "";
-    }
+    if(operadoractual !== "") evaluar();
+    primerNumero = display.textContent;
+    operadoractual = operador;
 }
+
+function evaluar(){
+    if(operadoractual == "/" && display.textContent == "0"){
+        alert("No se puede dividir por cero");
+        return;
+    }
+    segundoNumero = display.textContent;
+    display.textContent = redondear(
+        operate(operadoractual, primerNumero, segundoNumero)
+    );
+    operadoractual = "";
+}
+
+function redondear(number) {
+    return Math.round(number * 1000) / 1000
+  }

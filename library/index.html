@@ -5,13 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
     <title>Library</title>
 </head>
 <body>
-    <div id="contenedor"></div>
+    <header>
+        <nav class="navegacion">
+            <h2 class="logo">Libreria</h2>
+        </nav>
+    </header>
+    <main>
+        
+        <div class="controles">
+            <button onclick="aparecerForm()">Nuevo libro</button>
+        </div>
 
+        <div id="formulario">
+            <div class="titulo">Ingresa los datos del libro</div>
+            <div class="datosLibro">
+                <form>
+                    <input name="newauthor" id="newauthor" type="text" placeholder="Autor" required>
+                    <input name="newtitle" id="newtitle" type="text" placeholder="Titulo" required>
+                    <input name="newnumberpages" id="newnumberpages" type="number" placeholder="Numero Paginas" required>
+                    <div id="radios">
+                        <label for="leido">
+                            <input id="leido" value="leido" type="radio" name="leido-noleido" required>Leido
+                        </label>
+                        <label for="noleido">
+                            <input id="noleido" value="noleido" type="radio" name="leido-noleido" required>No leido
+                        </label>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" id="ingresarLibro">Ingresar</button>
+                        <div id="cancelarForm" onclick="cancelarForm()">Cancelar</div>
+                    </div>
+                </form>
+                
+                
+            </div>
+        </div>
+        
+        <div id="contenedor"></div>
+    </main>
     <script src="index.js"></script>
 </body>
 </html>

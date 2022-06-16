@@ -13,10 +13,16 @@ function pantalla() {
     const input = document.createElement("input");
     const button = document.createElement("button");
 
+    input.setAttribute("type", "text");
+    input.setAttribute("placeholder", "Ingrese una ciudad");
+    input.setAttribute("name", "ciudad");
+    input.setAttribute("required", "");
+    button.setAttribute("type", "submit");
+
     button.textContent = "Buscar";
     tituloBusqueda.textContent = "Buscar ciudad";
 
-
+    div.classList.add("contenedorPrincipal");
     encabezado.classList.add("encabezado");
     titulo.classList.add("titulo");
     titulo.textContent = "Weather App";

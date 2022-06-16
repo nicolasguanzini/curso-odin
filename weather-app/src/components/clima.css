@@ -6,13 +6,14 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-.contenedorPrincipal{
+.container{
     
     display: block;
     width: 500px;
     margin:auto;
-    margin-top:40px;
+    padding-top:30px;
+    padding-bottom:30px;
+    margin-top: 20px;
     text-align: center;
     border: black solid 1px;
-    padding-bottom: 30px;
 }

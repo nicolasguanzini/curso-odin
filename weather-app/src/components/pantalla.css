@@ -1,18 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,500&display=swap');
 
 body{
+    color: white;
     margin:0;
     padding:0;
     font-family: 'Roboto', sans-serif;
+    background-image: url("../fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    text-shadow: 0 13.36px 8.896px #000000bc,0 -2px 1px rgba(0, 0, 0, 0.747);
 }
 
 .contenedorPrincipal{
-    
     display: block;
     width: 500px;
     margin:auto;
-    margin-top:40px;
+    margin-top:30px;
     text-align: center;
-    border: black solid 1px;
-    padding-bottom: 30px;
+   /*border: black solid 1px;*/
+    padding: 30px;
+    padding-top:10px;
+    padding-bottom:50px;
+    /*box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;*/
+}
+
+label{
+    font-size: 1.1rem;
+}
+
+input{
+    margin-top:10px;
+    padding: 10px;
+    width: 200px;
+    border-radius: 5px;
+    border:none;
+    margin-right: 10px;
+}
+
+.titulo{
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+button{
+    padding:10px;
+    width: 100px;
+    background-color: rgb(0, 0, 0);
+    color:white;
+    font-weight: bold;
+    border-radius: 5px;
+    border:none;
+    cursor: pointer;
 }

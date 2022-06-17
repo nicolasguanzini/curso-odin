@@ -7,13 +7,31 @@ body{
 }
 
 .container{
-    
+    /*box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;*/
     display: block;
     width: 500px;
     margin:auto;
-    padding-top:30px;
-    padding-bottom:30px;
-    margin-top: 20px;
+    margin-top: 0;
     text-align: center;
-    border: black solid 1px;
+   /* border: black solid 1px;*/
+   background-color: rgba(0, 0, 0, 0.267);
+   border-radius: 5px;
+   padding-top:20px;
+   padding-bottom: 20px;
+}
+
+.ciudad{
+    font-size: 1.8rem;
+}
+
+.titulo-temp{
+    margin-top: 10px;
+}
+
+.titulo-sensacion{
+    margin-top:10px;
+}
+
+.descripcion-clima{
+    margin-top:10px;
 }

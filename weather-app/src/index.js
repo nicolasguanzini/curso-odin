@@ -23,6 +23,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
   getData(formData.get("ciudad"))
   .then((data) => {
     document.body.appendChild(clima(data));
+    console.log(data);
   })
   .catch((error)=> console.error(error));
 

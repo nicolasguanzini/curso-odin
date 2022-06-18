@@ -1,0 +1,13 @@
+.contPrincipal{
+    position: fixed;
+    top:72px;
+    left:400px;
+    background-color: rgb(146, 146, 146);
+    width: 100vw;
+    height: 100vh;
+}
+
+.contPrincipal h3{
+          font-weight: 500;
+          margin-left: 20px;
+      }

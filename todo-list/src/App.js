@@ -1,16 +1,16 @@
 import React from "react";
 import './App.css';
 import Header from "./components/header.js";
+import Proyectos from "./components/Proyectos";
+import ContPrincipal from "./components/ContPrincipal";
 
 
 function Proyecto(nombre, todos) {
-  this.nombre = nombre;
-  this.todos = todos;
+  return {nombre, todos};
 }
 
 function Todo(descripcion, completado) {
-  this.descripcion = descripcion;
-  this.completado = completado;
+  return {descripcion, completado}
 }
 
 function App() {
@@ -20,13 +20,13 @@ function App() {
   const [todoActual, setTodoActual] = React.useState(null);
 
   const agregarProyecto = (nombre) => {
-    const nuevoProyecto = new Proyecto(nombre, []);
+    const nuevoProyecto = Proyecto(nombre, []);
     setProyectos([...proyectos, nuevoProyecto]);
     setProyectoActual(nuevoProyecto);
   }
 
   const agregarTodo = (descripcion) => {
-    const nuevoTodo = new Todo(descripcion, false);
+    const nuevoTodo = Todo(descripcion, false);
     setTodos([...todos, nuevoTodo]);
     setTodoActual(nuevoTodo);
   }
@@ -43,13 +43,8 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {(todos[0] === undefined ? <h2>No hay todos</h2> : 
-      todos.map((todo, index) => {
-        return(
-          <div key={index}>{todo.descripcion}</div>
-        )
-      }))}
-      <button onClick={()=> agregarTodo("hola")}>Agregar todo</button>
+      <Proyectos proyectos={proyectos} agregarProyecto={agregarProyecto} proyectoActual={proyectoActual} setProyectoActual={setProyectoActual}/>
+      <ContPrincipal proyectos={proyectos} proyectoActual={proyectoActual} todos={todos} setTodos={setTodos} todoActual={setTodoActual}/>
     </div>
   );
 }

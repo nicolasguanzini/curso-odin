@@ -20,8 +20,10 @@ function Addproject(props) {
         <div className="add-project">
             <form  onSubmit={submitProyecto} className="formulario" >  
                 <input onChange={event => setNombreProyecto(event.target.value)} value={nombreProyecto} name="proyectoNuevo" id="proyectoNuevo" type="text" placeholder="Nombre del proyecto" className="input-nombre" required />
-                <button type="submit">Agregar</button>
+                <div className="botones">
+                <button className="botonSubmit" type="submit">Agregar</button>
                 <button type="button" onClick={()=> props.setVisibilidadAddProyecto("cont-add-project visibility")}>Cancelar</button>
+                </div>
             </form>
         </div>
       </div>

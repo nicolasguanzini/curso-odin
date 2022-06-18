@@ -9,16 +9,43 @@
 }
 
 .add-project{
-    height: 300px;
-    width: 600px;
+    height: auto;
+    width: 400px;
     position: absolute;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
     background-color: white;
     border-radius: 10px;
+    padding:30px;
 }
 
 .visibility{
     display: none;
+}
+
+.input-nombre{
+    display: block;
+    width: 90%;
+    margin:auto;
+    padding:10px;
+    border-radius: 5px;
+    border:1px rgb(146, 146, 146) solid;
+    margin-bottom: 10px;
+}
+
+.botones{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 90%;
+    margin:auto;
+}
+
+.botones button{
+    background-color: black;
+    color:white;
+    cursor:pointer;
+    padding:7px;
+    border-radius: 5%;
 }

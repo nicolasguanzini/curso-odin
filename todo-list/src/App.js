@@ -10,14 +10,13 @@ function ProyectoFactory(nombre, todos) {
   return {nombre, todos};
 }
 
-function TodoFactory(descripcion, completado) {
-  return {descripcion, completado}
+function TodoFactory(descripcion, proyecto, completado) {
+  return {descripcion, proyecto, completado}
 }
 
 function App() {
   const [proyectos, setProyectos] = React.useState([]);
   const [proyectoActual, setProyectoActual] = React.useState(null);
-  const [todos, setTodos] = React.useState([]);
   const [todoActual, setTodoActual] = React.useState(null);
   const [visibilidadAddProyecto, setVisibilidadAddProyecto] = React.useState("cont-add-project visibility");
 
@@ -30,23 +29,48 @@ function App() {
         return;
       }
     }
+
     setProyectos([...proyectos, nuevoProyecto]);
     setProyectoActual(nuevoProyecto);
   }
 
-  const agregarTodo = (descripcion) => {
-    const nuevoTodo = TodoFactory(descripcion, false);
-    setTodos([...todos, nuevoTodo]);
-    setTodoActual(nuevoTodo);
+  const agregarTodo = (descripcion, proyecto) => {
+    const nuevoTodo = TodoFactory(descripcion, proyecto, false);
+    const indiceProyecto = proyectos.findIndex(proy => proy.nombre === proyecto);
+
+    if(indiceProyecto === -1){
+      alert("El proyecto no existe");
+      return;
+    }else{
+      for(let i=0; i<proyectos[indiceProyecto].todos.length; i++){
+        if(proyectos[indiceProyecto].todos[i] === descripcion){
+          alert("Ya existe un Todo con ese nombre");
+          return;
+        }
+        
+        let clonProyectos = [...proyectos];
+        clonProyectos[indiceProyecto].todo.push(nuevoTodo);
+        setProyectos(clonProyectos);
+    }
   }
 
   const eliminarProyecto = (proyecto) => {
-    setProyectos(proyectos.filter(p => p.nombre !== proyecto.nombre));
-    
+    const indiceProyecto = proyectos.findIndex(proy => proy.nombre === proyecto);
+    if(indiceProyecto === -1){
+      alert("El proyecto no existe");
+      return;
+    }
+    const clonProyectos = [...proyectos];
+    clonProyectos.splice(indiceProyecto, 1);
+    setProyectos(clonProyectos);
   }
 
-  const eliminarTodo = (todo) => {
-    setTodos(todos.filter(t => t.descripcion !== todo.descripcion));
+  const eliminarTodo = (todo, proyecto) => {
+    const indiceProyecto = proyectos.findIndex(proy => proy.nombre === proyecto.nombre);
+    const indiceTodo = proyectos[indiceProyecto].todos.findIndex(t => t.descripcion === todo.descripcion);
+    let clonProyectos = [...proyectos];
+    clonProyectos[indiceProyecto].todos.splice(indiceTodo, 1);
+    setProyectos(clonProyectos);
   }
 
   return (
@@ -57,10 +81,11 @@ function App() {
       
       <Proyectos proyectos={proyectos} agregarProyecto={agregarProyecto} proyectoActual={proyectoActual} setProyectoActual={setProyectoActual} setVisibilidadAddProyecto={setVisibilidadAddProyecto} eliminarProyecto={eliminarProyecto} />
 
-      <ContPrincipal proyectos={proyectos} proyectoActual={proyectoActual} todos={todos} setTodos={setTodos} todoActual={setTodoActual}/>
+      <ContPrincipal proyectos={proyectos} proyectoActual={proyectoActual} todoActual={setTodoActual}/>
 
     </div>
   );
+}
 }
 
 export default App;

@@ -58,7 +58,7 @@ function App() {
 }
 
   const eliminarProyecto = (proyecto) => {
-    const indiceProyecto = proyectos.findIndex(proy => proy.nombre === proyecto);
+    const indiceProyecto = proyectos.findIndex(proy => proy.nombre === proyecto.nombre);
     if(indiceProyecto === -1){
       alert("El proyecto no existe");
       return;

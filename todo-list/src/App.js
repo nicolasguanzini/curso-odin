@@ -1,9 +1,9 @@
 import React from "react";
 import './App.css';
 import Header from "./components/header.js";
+import Addproject from "./components/Addproject";
 import Proyectos from "./components/Proyectos";
 import ContPrincipal from "./components/ContPrincipal";
-import Addproject from "./components/Addproject";
 
 
 function ProyectoFactory(nombre, todos) {
@@ -42,6 +42,7 @@ function App() {
       alert("El proyecto no existe");
       return;
     }else{
+
       for(let i=0; i<proyectos[indiceProyecto].todos.length; i++){
         if(proyectos[indiceProyecto].todos[i] === descripcion){
           alert("Ya existe un Todo con ese nombre");
@@ -53,6 +54,7 @@ function App() {
         setProyectos(clonProyectos);
     }
   }
+}
 
   const eliminarProyecto = (proyecto) => {
     const indiceProyecto = proyectos.findIndex(proy => proy.nombre === proyecto);
@@ -80,12 +82,11 @@ function App() {
       <Header />
       
       <Proyectos proyectos={proyectos} agregarProyecto={agregarProyecto} proyectoActual={proyectoActual} setProyectoActual={setProyectoActual} setVisibilidadAddProyecto={setVisibilidadAddProyecto} eliminarProyecto={eliminarProyecto} />
-
-      <ContPrincipal proyectos={proyectos} proyectoActual={proyectoActual} todoActual={setTodoActual}/>
+      
+      <ContPrincipal proyectos={proyectos} proyectoActual={proyectoActual} />
 
     </div>
   );
-}
 }
 
 export default App;

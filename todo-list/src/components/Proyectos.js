@@ -8,6 +8,7 @@ function Proyectos(props) {
       <div className="proyectos">
         <h3>Proyectos</h3>
         <button id="agregarproyecto" onClick={()=> props.setVisibilidadAddProyecto("cont-add-project")}>Agregar Proyecto</button>
+
         {(props.proyectos[0] === undefined)? 
         <h4>Aún no hay proyectos</h4>:
         props.proyectos.map((proy, index)=>{
@@ -18,6 +19,7 @@ function Proyectos(props) {
                     </div>
                   );
         })}
+        
       </div>
     );
   }

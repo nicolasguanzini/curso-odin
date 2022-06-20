@@ -4,11 +4,10 @@ import React, { useEffect } from "react";
 function ContPrincipal(props) {
 
   const [indiceActual, setIndiceActual] = React.useState(null);
+  const [indiceTodo, setIndiceTodo] = React.useState(null);
 
   useEffect(
-
-    ()=>{
-      
+    ()=>{    
       if(props.proyectoActual === null){
 
       }else{
@@ -16,10 +15,20 @@ function ContPrincipal(props) {
         setIndiceActual(indiceProyecto);
 
       }
-
     }
-
   ,[props.proyectos, props.proyectoActual]);
+
+  useEffect(
+    ()=>{  
+      if(props.todoActual === null){
+
+      }else{
+        const indice = props.proyectos[indiceActual].todos.findIndex(todo => todo.descripcion === props.todoActual.descripcion);
+        setIndiceTodo(indice);
+
+      }
+    }
+  ,[props.todoActual]);
 
     return (
       <div className="contPrincipal">
@@ -34,8 +43,18 @@ function ContPrincipal(props) {
          <div></div> : (props.proyectos[indiceActual].todos[0] == undefined)?
          <div></div>:  props.proyectos[indiceActual].todos.map(
             (todo, index)=>{
+              let clase = "cont-todo";
+
+              if(index === indiceTodo){
+                clase = "cont-todo selection"
+              }
+
               return(
-                <h3 key={index}>{todo.descripcion}</h3>
+                <div className={clase} key={index}>
+                       <div onClick={()=> props.setTodoActual(todo)} className="todoInd">{todo.descripcion}</div>
+                       <button onClick={()=> props.eliminarTodo(todo)}className="btnEliminarTodo">eliminar</button>
+                    </div>
+
               );
             }
 

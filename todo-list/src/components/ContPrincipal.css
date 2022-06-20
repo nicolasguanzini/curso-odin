@@ -21,3 +21,33 @@ border-radius: 5px;
 background-color: black;
 color:white;
 }
+
+.cont-todo{
+    background-color: rgb(225, 225, 225);
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    margin:auto;
+    margin-top: 10px;
+    margin-left:10px;
+    border-radius: 5px;
+    padding: 0px;
+    cursor:pointer;
+}
+
+.cont-todo:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+.cont-todo:active{
+    border: solid black 1px;
+}
+
+.selection{
+    background-color: rgb(255, 255, 255);
+}
+
+.todoInd{
+    width: 60%;
+    padding: 10px;
+}

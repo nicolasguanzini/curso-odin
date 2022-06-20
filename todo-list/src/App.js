@@ -54,6 +54,7 @@ function App() {
         let clonProyectos = [...proyectos];
         clonProyectos[indiceProyecto].todos.push(nuevoTodo);
         setProyectos(clonProyectos);
+        setTodoActual(nuevoTodo);
   }
 }
 
@@ -87,7 +88,7 @@ function App() {
       
       <Proyectos proyectos={proyectos} agregarProyecto={agregarProyecto} proyectoActual={proyectoActual} setProyectoActual={setProyectoActual} setVisibilidadAddProyecto={setVisibilidadAddProyecto} eliminarProyecto={eliminarProyecto} />
       
-      <ContPrincipal proyectos={proyectos} proyectoActual={proyectoActual} setVisibilidadAddTodo={setVisibilidadAddTodo} setTodoActual={setTodoActual} eliminarTodo={eliminarTodo} />
+      <ContPrincipal proyectos={proyectos} proyectoActual={proyectoActual} setVisibilidadAddTodo={setVisibilidadAddTodo} setTodoActual={setTodoActual} todoActual={todoActual} eliminarTodo={eliminarTodo} />
 
     </div>
   );

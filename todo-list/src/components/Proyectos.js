@@ -1,8 +1,25 @@
 import "./Proyectos.css";
-import React from "react";
+import React, { useEffect } from "react";
 
 function Proyectos(props) {
-    const [indiceProy, setIndiceProy] = React.useState(0);
+
+  const [indiceActual, setIndiceActual] = React.useState(null);
+
+  useEffect(
+
+    ()=>{
+      
+      if(props.proyectoActual === null){
+
+      }else{
+        const indiceProyecto = props.proyectos.findIndex(proy => proy.nombre === props.proyectoActual.nombre);
+        setIndiceActual(indiceProyecto);
+
+      }
+
+    }
+
+  ,[props.proyectoActual]);
 
     return (
       <div className="proyectos">
@@ -11,9 +28,15 @@ function Proyectos(props) {
 
         {(props.proyectos[0] === undefined)? 
         <h4>Aún no hay proyectos</h4>:
+
         props.proyectos.map((proy, index)=>{
+          let clase = "contProy";
+
+          if(indiceActual === index){
+            clase = "contProy seleccionado";
+          }
                   return (
-                    <div className="contProy" key={index}>
+                    <div className={clase} key={index}>
                        <div onClick={()=> props.setProyectoActual(proy)} className="proyectoInd">{proy.nombre}</div>
                        <button onClick={()=> props.eliminarProyecto(proy)}className="botoneliminar">eliminar</button>
                     </div>

@@ -19,7 +19,7 @@ function AddTodo(props) {
     return (
       <div className={props.visibilidadAddTodo}>
         <div className="add-todo">
-            <h3>Agregar TODO</h3>
+            <h3>Agregar Tarea</h3>
             <form  onSubmit={submitTODO} className="formulario" >  
                 <input onChange={event => setNombreTODO(event.target.value)} value={nombreTODO} name="todoNuevo" id="todoNuevo" type="text" placeholder="Nombre de la Tarea" className="input-nombre" required />
                 <div className="botones">

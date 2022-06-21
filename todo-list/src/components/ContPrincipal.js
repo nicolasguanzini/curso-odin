@@ -30,6 +30,13 @@ function ContPrincipal(props) {
     }
   ,[props.todoActual]);
 
+  function confirmacion(tarea){
+    let conf = window.confirm("Realmente desea eliminar la tarea?");
+    if(conf){
+      props.eliminarTodo(tarea);
+    }
+  }
+
     return (
       <div className="contPrincipal">
         <h3>Tareas</h3>
@@ -52,7 +59,7 @@ function ContPrincipal(props) {
               return(
                 <div className={clase} key={index}>
                        <div onClick={()=> props.setTodoActual(todo)} className="todoInd">{todo.descripcion}</div>
-                       <button onClick={()=> props.eliminarTodo(todo)}className="btnEliminarTodo">eliminar</button>
+                       <button onClick={()=> confirmacion(todo)}className="btnEliminarTodo">eliminar</button>
                     </div>
 
               );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './App.css';
 import Header from "./components/header.js";
 import Addproject from "./components/Addproject";
@@ -21,6 +21,22 @@ function App() {
   const [todoActual, setTodoActual] = React.useState(null);
   const [visibilidadAddProyecto, setVisibilidadAddProyecto] = React.useState("cont-add-project visibility");
   const [visibilidadAddTodo, setVisibilidadAddTodo] = React.useState("cont-add-todo visibility");
+
+
+  useEffect(
+    ()=>{
+      const input = document.getElementById("proyectoNuevo");
+      input.focus();
+    }
+  ,[visibilidadAddProyecto]);
+
+  useEffect(
+    ()=>{
+      const input = document.getElementById("todoNuevo");
+      input.focus();
+    }
+  ,[visibilidadAddTodo]);
+
 
   const agregarProyecto = (nombre) => {
     const nuevoProyecto = ProyectoFactory(nombre, []);
@@ -46,8 +62,8 @@ function App() {
     }else{
 
       for(let i=0; i<proyectos[indiceProyecto].todos.length; i++){
-        if(proyectos[indiceProyecto].todos[i] === descripcion){
-          alert("Ya existe un Todo con ese nombre");
+        if(proyectos[indiceProyecto].todos[i].descripcion === descripcion){
+          alert("Ya existe una tarea con esa descripción");
           return;
         }}
         
@@ -69,8 +85,8 @@ function App() {
     setProyectos(clonProyectos);
   }
 
-  const eliminarTodo = (todo, proyecto) => {
-    const indiceProyecto = proyectos.findIndex(proy => proy.nombre === proyecto.nombre);
+  const eliminarTodo = (todo) => {
+    const indiceProyecto = proyectos.findIndex(proy => proy.nombre === todo.proyecto);
     const indiceTodo = proyectos[indiceProyecto].todos.findIndex(t => t.descripcion === todo.descripcion);
     let clonProyectos = [...proyectos];
     clonProyectos[indiceProyecto].todos.splice(indiceTodo, 1);

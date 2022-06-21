@@ -6,20 +6,24 @@ function Proyectos(props) {
   const [indiceActual, setIndiceActual] = React.useState(null);
 
   useEffect(
-
-    ()=>{
-      
+    ()=>{    
       if(props.proyectoActual === null){
 
       }else{
         const indiceProyecto = props.proyectos.findIndex(proy => proy.nombre === props.proyectoActual.nombre);
         setIndiceActual(indiceProyecto);
-
       }
+    }
+  ,[props.proyectoActual]);
 
+
+    function confirmacion(proyecto){
+      let conf = window.confirm("Realmente desea eliminar el proyecto?");
+      if(conf){
+        props.eliminarProyecto(proyecto);
+      }
     }
 
-  ,[props.proyectoActual]);
 
     return (
       <div className="proyectos">
@@ -38,7 +42,7 @@ function Proyectos(props) {
                   return (
                     <div className={clase} key={index}>
                        <div onClick={()=> props.setProyectoActual(proy)} className="proyectoInd">{proy.nombre}</div>
-                       <button onClick={()=> props.eliminarProyecto(proy)}className="botoneliminar">eliminar</button>
+                       <button onClick={()=> confirmacion(proy)}className="botoneliminar">eliminar</button>
                     </div>
                   );
         })}

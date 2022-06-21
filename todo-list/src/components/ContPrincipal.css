@@ -23,7 +23,7 @@ color:white;
 }
 
 .cont-todo{
-    background-color: rgb(225, 225, 225);
+    background-color: rgb(174, 174, 174);
     width: 600px;
     display: flex;
     justify-content: space-between;
@@ -36,7 +36,7 @@ color:white;
 }
 
 .cont-todo:hover{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(238, 238, 238);
 }
 
 .cont-todo:active{
@@ -49,6 +49,14 @@ color:white;
 }
 
 .todoInd{
-    width: 60%;
+    width: 88%;
     padding: 10px;
+}
+
+.tachado{
+    text-decoration: line-through;
+}
+
+.btnEliminarTodo{
+    width: 12%;
 }

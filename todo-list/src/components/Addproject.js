@@ -18,6 +18,7 @@ function Addproject(props) {
     return (
       <div className={props.visibilidadAddProyecto}>
         <div className="add-project">
+        <h3>Agregar Proyecto</h3>
             <form  onSubmit={submitProyecto} className="formulario" >  
                 <input onChange={event => setNombreProyecto(event.target.value)} value={nombreProyecto} name="proyectoNuevo" id="proyectoNuevo" type="text" placeholder="Nombre del proyecto" className="input-nombre" required />
                 <div className="botones">

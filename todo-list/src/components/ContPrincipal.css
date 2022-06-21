@@ -31,7 +31,7 @@ color:white;
     margin-top: 10px;
     margin-left:10px;
     border-radius: 5px;
-    padding: 0px;
+    padding: 1px;
     cursor:pointer;
 }
 
@@ -41,6 +41,7 @@ color:white;
 
 .cont-todo:active{
     border: solid black 1px;
+    padding: 0px;
 }
 
 .selection{

@@ -1,4 +1,4 @@
-import "./Addproject.css";
+import "../styles/Addproject.css";
 import React from "react";
 
 function Addproject(props) {

@@ -1,4 +1,4 @@
-import "./Proyectos.css";
+import "../styles/Proyectos.css";
 import React, { useEffect } from "react";
 
 function Proyectos(props) {

@@ -1,4 +1,4 @@
-import "./ContPrincipal.css";
+import "../styles/ContPrincipal.css";
 import React, { useEffect } from "react";
 
 function ContPrincipal(props) {
@@ -44,7 +44,7 @@ function ContPrincipal(props) {
         
         {(props.proyectos[0] === undefined)?
           <h4>Aún no ha seleccionado un proyecto</h4>:
-          <h4><u>Proyecto:</u> {props.proyectoActual.nombre}</h4>}
+          <h4><u>Proyecto:</u> {!(props.proyectoActual == null) && props.proyectoActual.nombre}</h4>}
 
           {(props.proyectos[indiceActual] === undefined)?
          <div></div> : (props.proyectos[indiceActual].todos[0] == undefined)?

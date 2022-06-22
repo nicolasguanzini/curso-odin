@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import './App.css';
 import Header from "./components/header.js";
 import Addproject from "./components/Addproject";
 import Proyectos from "./components/Proyectos";
@@ -16,12 +15,24 @@ function TodoFactory(descripcion, proyecto, completado) {
 }
 
 function App() {
-  const [proyectos, setProyectos] = React.useState([]);
+  const [proyectos, setProyectos] = React.useState(parseJsonProyectos());
   const [proyectoActual, setProyectoActual] = React.useState(null);
   const [todoActual, setTodoActual] = React.useState(null);
   const [visibilidadAddProyecto, setVisibilidadAddProyecto] = React.useState("cont-add-project visibility");
   const [visibilidadAddTodo, setVisibilidadAddTodo] = React.useState("cont-add-todo visibility");
 
+
+  function parseJsonProyectos(){
+    try {
+      if(JSON.parse(window.localStorage.getItem("proyectos")) == null){
+        return [];
+      }else{
+        return JSON.parse(window.localStorage.getItem("proyectos"));
+      } 
+    } catch(ex){
+      return [];
+    }
+    }
 
   useEffect(
     ()=>{
@@ -47,7 +58,7 @@ function App() {
         return;
       }
     }
-
+    window.localStorage.setItem("proyectos", JSON.stringify([...proyectos, nuevoProyecto]));
     setProyectos([...proyectos, nuevoProyecto]);
     setProyectoActual(nuevoProyecto);
   }
@@ -69,6 +80,7 @@ function App() {
         
         let clonProyectos = [...proyectos];
         clonProyectos[indiceProyecto].todos.push(nuevoTodo);
+        window.localStorage.setItem("proyectos", JSON.stringify(clonProyectos));
         setProyectos(clonProyectos);
         setTodoActual(nuevoTodo);
   }
@@ -82,6 +94,7 @@ function App() {
     }
     const clonProyectos = [...proyectos];
     clonProyectos.splice(indiceProyecto, 1);
+    window.localStorage.setItem("proyectos", JSON.stringify(clonProyectos));
     setProyectos(clonProyectos);
   }
 
@@ -90,6 +103,7 @@ function App() {
     const indiceTodo = proyectos[indiceProyecto].todos.findIndex(t => t.descripcion === todo.descripcion);
     let clonProyectos = [...proyectos];
     clonProyectos[indiceProyecto].todos.splice(indiceTodo, 1);
+    window.localStorage.setItem("proyectos", JSON.stringify(clonProyectos));
     setProyectos(clonProyectos);
   }
 

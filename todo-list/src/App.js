@@ -10,8 +10,8 @@ function ProyectoFactory(nombre, todos) {
   return {nombre, todos};
 }
 
-function TodoFactory(descripcion, proyecto, completado) {
-  return {descripcion, proyecto, completado}
+function TodoFactory(descripcion, proyecto, fecha, completado) {
+  return {descripcion, proyecto, fecha, completado}
 }
 
 function App() {
@@ -63,8 +63,8 @@ function App() {
     setProyectoActual(nuevoProyecto);
   }
 
-  const agregarTodo = (descripcion, proyecto) => {
-    const nuevoTodo = TodoFactory(descripcion, proyecto, false);
+  const agregarTodo = (descripcion, proyecto, fecha) => {
+    const nuevoTodo = TodoFactory(descripcion, proyecto, fecha, false);
     const indiceProyecto = proyectos.findIndex(proy => proy.nombre === proyecto);
 
     if(indiceProyecto === -1){

@@ -49,3 +49,18 @@
     padding:7px;
     border-radius: 5%;
 }
+
+#fechaNueva{
+    display: block;
+    width: 95%;
+    margin:auto;
+    margin-bottom: 20px;
+}
+
+label{
+    display: block;
+    width: 95%;
+    margin:auto;
+    margin-bottom: 5px;
+    text-decoration: underline;
+}

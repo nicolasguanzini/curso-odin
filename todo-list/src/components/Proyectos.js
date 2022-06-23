@@ -40,8 +40,8 @@ function Proyectos(props) {
             clase = "contProy seleccionado";
           }
                   return (
-                    <div className={clase} key={index}>
-                       <div onClick={()=> props.setProyectoActual(proy)} className="proyectoInd">{proy.nombre}</div>
+                    <div onClick={()=> props.setProyectoActual(proy)} className={clase} key={index}>
+                       <div  className="proyectoInd">{proy.nombre}</div>
                        <button onClick={()=> confirmacion(proy)}className="botoneliminar">eliminar</button>
                     </div>
                   );

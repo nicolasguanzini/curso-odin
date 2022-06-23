@@ -31,7 +31,7 @@ function Proyectos(props) {
         <button id="agregarproyecto" onClick={()=> props.setVisibilidadAddProyecto("cont-add-project")}>Agregar Proyecto</button>
 
         {(props.proyectos[0] === undefined)? 
-        <h4>Aún no hay proyecto</h4>:
+        <h4>Aún no hay proyectos</h4>:
 
         props.proyectos.map((proy, index)=>{
           let clase = "contProy";

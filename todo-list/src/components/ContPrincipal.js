@@ -59,7 +59,7 @@ function ContPrincipal(props) {
               return(
                 <div onClick={()=> props.setTodoActual(todo)} className={clase} key={index}>
                        <div  className="todoInd">{todo.descripcion}</div>
-                       <button className="btnEditarTodo">editar</button>
+                      <div>{todo.fecha}</div>
                        <button onClick={()=> confirmacion(todo)}className="btnEliminarTodo">eliminar</button>
                     </div>
 

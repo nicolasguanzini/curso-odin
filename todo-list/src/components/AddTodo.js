@@ -32,10 +32,13 @@ function AddTodo(props) {
         <div className="add-todo">
             <h3>Agregar Tarea</h3>
             <form  onSubmit={submitTODO} className="formulario" >  
+
                 <label>Descripción:</label>
                 <input onChange={event => setNombreTODO(event.target.value)} value={nombreTODO} name="todoNuevo" id="todoNuevo" type="text" placeholder="Nombre de la Tarea" className="input-nombre" required />
+
                 <label>Fecha:</label>
                 <input onChange={handleFecha} value={fechaMuestra} name="fechaNueva" id="fechaNueva" type="date"  className="input-fecha" required />
+                
                 <div className="botones">
                 <button className="botonSubmit" type="submit">Agregar</button>
                 <button type="button" onClick={()=> props.setVisibilidadAddTodo("cont-add-todo visibility")}>Cancelar</button>

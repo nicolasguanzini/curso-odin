@@ -1,4 +1,4 @@
-.cont-add-todo{
+.cont-edit-todo{
     position: fixed;
     top: 0;
     left: 0;
@@ -8,7 +8,7 @@
     z-index:15;
 }
 
-.add-todo{
+.edit-todo{
     height: auto;
     width: 400px;
     position: absolute;

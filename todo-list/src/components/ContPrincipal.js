@@ -1,10 +1,26 @@
 import "../styles/ContPrincipal.css";
 import React, { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faPenToSquare} from "@fortawesome/free-solid-svg-icons";
 
 function ContPrincipal(props) {
 
   const [indiceActual, setIndiceActual] = React.useState(null);
   const [indiceTodo, setIndiceTodo] = React.useState(null);
+
+  const handleCkeck = tarea => (e) => {
+    props.setTodoActual(tarea);
+    
+    if(tarea !== {}){
+      
+      if(tarea.completado && !e.target.checked){
+        props.editarTodo(tarea, tarea.descripcion, tarea.fecha, false);
+      }else if(!tarea.completado && e.target.checked){
+        props.editarTodo(tarea, tarea.descripcion, tarea.fecha, true);
+      }
+    }
+
+  }
 
   useEffect(
     ()=>{    
@@ -51,15 +67,23 @@ function ContPrincipal(props) {
          <div></div>:  props.proyectos[indiceActual].todos.map(
             (todo, index)=>{
               let clase = "cont-todo";
+              let tachado = "todoInd";
 
               if(index === indiceTodo){
                 clase = "cont-todo selection"
               }
 
+              if(todo.completado){
+                tachado = "todoInd tachado";
+              }
+
               return(
                 <div onClick={()=> props.setTodoActual(todo)} className={clase} key={index}>
-                       <div  className="todoInd">{todo.descripcion}</div>
-                      <div>{todo.fecha}</div>
+                     <input  onChange={handleCkeck(todo)} className="checkbox" type="checkbox"></input>
+                       <div  className={tachado} >{todo.descripcion}</div>
+                       
+                       <FontAwesomeIcon onClick={()=> props.setVisibilidadEditTodo("cont-edit-todo")} className="editIcon" icon={faPenToSquare} />
+                       
                        <button onClick={()=> confirmacion(todo)}className="btnEliminarTodo">eliminar</button>
                     </div>
 

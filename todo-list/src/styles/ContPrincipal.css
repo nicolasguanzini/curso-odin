@@ -26,7 +26,7 @@ color:white;
     background-color: rgb(174, 174, 174);
     width: 600px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin:auto;
     margin-top: 10px;
     margin-left:10px;
@@ -59,4 +59,16 @@ color:white;
 
 .btnEliminarTodo{
     width: 11%;
+}
+
+.editIcon{
+    height: 25px;
+    margin-top:auto;
+    margin-bottom: auto;
+}
+
+.checkbox{
+    height: 25px;
+    margin-top:auto;
+    margin-bottom: auto;
 }

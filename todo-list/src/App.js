@@ -4,6 +4,7 @@ import Addproject from "./components/Addproject";
 import Proyectos from "./components/Proyectos";
 import ContPrincipal from "./components/ContPrincipal";
 import AddTodo from "./components/AddTodo";
+import EditTodo from "./components/EditTodo.js";
 
 
 function ProyectoFactory(nombre, todos) {
@@ -20,6 +21,7 @@ function App() {
   const [todoActual, setTodoActual] = React.useState(null);
   const [visibilidadAddProyecto, setVisibilidadAddProyecto] = React.useState("cont-add-project visibility");
   const [visibilidadAddTodo, setVisibilidadAddTodo] = React.useState("cont-add-todo visibility");
+  const [visibilidadEditTodo, setVisibilidadEditTodo] = React.useState("cont-edit-todo visibility");
 
 
   function parseJsonProyectos(){
@@ -107,6 +109,17 @@ function App() {
     setProyectos(clonProyectos);
   }
 
+  const editarTodo = (todo, descripcion, fecha, completado) => {
+    const nuevoTodo = TodoFactory(descripcion, todo.proyecto, fecha, completado);
+    const indiceProyecto = proyectos.findIndex(proy => proy.nombre === todo.proyecto);
+    const indiceTodo = proyectos[indiceProyecto].todos.findIndex(t => t.descripcion === todo.descripcion);
+    let clonProyectos = [...proyectos];
+    clonProyectos[indiceProyecto].todos[indiceTodo] = nuevoTodo;
+    window.localStorage.setItem("proyectos", JSON.stringify(clonProyectos));
+    setProyectos(clonProyectos);
+    setTodoActual(nuevoTodo);
+  }
+
   return (
     <div className="App">
       
@@ -114,11 +127,13 @@ function App() {
 
       <AddTodo visibilidadAddTodo={visibilidadAddTodo} setVisibilidadAddTodo={setVisibilidadAddTodo} agregarTodo={agregarTodo} proyectoActual={proyectoActual} proyectos={proyectos} />
 
+      <EditTodo visibilidadEditTodo={visibilidadEditTodo} setVisibilidadEditTodo={setVisibilidadEditTodo} />
+
       <Header />
       
       <Proyectos proyectos={proyectos} agregarProyecto={agregarProyecto} proyectoActual={proyectoActual} setProyectoActual={setProyectoActual} setVisibilidadAddProyecto={setVisibilidadAddProyecto} eliminarProyecto={eliminarProyecto} />
       
-      <ContPrincipal proyectos={proyectos} proyectoActual={proyectoActual} setVisibilidadAddTodo={setVisibilidadAddTodo} setTodoActual={setTodoActual} todoActual={todoActual} eliminarTodo={eliminarTodo} />
+      <ContPrincipal proyectos={proyectos} proyectoActual={proyectoActual} setVisibilidadAddTodo={setVisibilidadAddTodo} setTodoActual={setTodoActual} todoActual={todoActual} eliminarTodo={eliminarTodo} setVisibilidadEditTodo={setVisibilidadEditTodo} editarTodo={editarTodo} />
 
     </div>
   );

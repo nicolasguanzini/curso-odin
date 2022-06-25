@@ -127,7 +127,7 @@ function App() {
 
       <AddTodo visibilidadAddTodo={visibilidadAddTodo} setVisibilidadAddTodo={setVisibilidadAddTodo} agregarTodo={agregarTodo} proyectoActual={proyectoActual} proyectos={proyectos} />
 
-      <EditTodo visibilidadEditTodo={visibilidadEditTodo} setVisibilidadEditTodo={setVisibilidadEditTodo} />
+      <EditTodo visibilidadEditTodo={visibilidadEditTodo} setVisibilidadEditTodo={setVisibilidadEditTodo} todoActual={todoActual} editarTodo={editarTodo} />
 
       <Header />
       

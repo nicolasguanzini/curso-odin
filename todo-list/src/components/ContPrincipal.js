@@ -1,25 +1,22 @@
 import "../styles/ContPrincipal.css";
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faPenToSquare} from "@fortawesome/free-solid-svg-icons";
+import {faPenToSquare, faCircleCheck, faCircle, faTrashCan} from "@fortawesome/free-solid-svg-icons";
 
 function ContPrincipal(props) {
 
   const [indiceActual, setIndiceActual] = React.useState(null);
   const [indiceTodo, setIndiceTodo] = React.useState(null);
+  const [checked, setChecked] = React.useState(false);
 
-  const handleCkeck = tarea => (e) => {
-    props.setTodoActual(tarea);
-    
-    if(tarea !== {}){
-      
-      if(tarea.completado && !e.target.checked){
-        props.editarTodo(tarea, tarea.descripcion, tarea.fecha, false);
-      }else if(!tarea.completado && e.target.checked){
-        props.editarTodo(tarea, tarea.descripcion, tarea.fecha, true);
-      }
-    }
+  function handleCheck(todo){
+    setChecked(!checked);
+    const indiceProyecto = props.proyectos.findIndex(proy => proy.nombre === todo.proyecto);
+    const indiceTodo = props.proyectos[indiceProyecto].todos.findIndex(t => t.descripcion === todo.descripcion);
+    let completado = props.proyectos[indiceProyecto].todos[indiceTodo].completado;
 
+    props.editarTodo(todo, todo.descripcion, todo.fecha, !completado);
+    console.log(props.proyectos);
   }
 
   useEffect(
@@ -60,7 +57,7 @@ function ContPrincipal(props) {
         
         {(props.proyectos[0] === undefined)?
           <h4>Aún no ha seleccionado un proyecto</h4>:
-          <h4><u>Proyecto:</u> {!(props.proyectoActual == null) && props.proyectoActual.nombre}</h4>}
+          <h4 className="proyecto-titulo"><u>Proyecto:</u> {!(props.proyectoActual == null) && props.proyectoActual.nombre}</h4>}
 
           {(props.proyectos[indiceActual] === undefined)?
          <div></div> : (props.proyectos[indiceActual].todos[0] == undefined)?
@@ -68,6 +65,7 @@ function ContPrincipal(props) {
             (todo, index)=>{
               let clase = "cont-todo";
               let tachado = "todoInd";
+              let chequeado = false;
 
               if(index === indiceTodo){
                 clase = "cont-todo selection"
@@ -75,16 +73,23 @@ function ContPrincipal(props) {
 
               if(todo.completado){
                 tachado = "todoInd tachado";
+                chequeado = true;
               }
 
               return(
                 <div onClick={()=> props.setTodoActual(todo)} className={clase} key={index}>
-                     <input  onChange={handleCkeck(todo)} className="checkbox" type="checkbox"></input>
+
+                  {chequeado ?
+                    <FontAwesomeIcon onClick={()=> handleCheck(todo)} className="ckecIcon" icon={faCircleCheck} /> :
+                    <FontAwesomeIcon onClick={()=> handleCheck(todo)} className="ckecIcon" icon={faCircle} />
+                     }
+                     
                        <div  className={tachado} >{todo.descripcion}</div>
                        
                        <FontAwesomeIcon onClick={()=> props.setVisibilidadEditTodo("cont-edit-todo")} className="editIcon" icon={faPenToSquare} />
                        
-                       <button onClick={()=> confirmacion(todo)}className="btnEliminarTodo">eliminar</button>
+                       <FontAwesomeIcon onClick={()=> confirmacion(todo)} className="deleteIcon" icon={faTrashCan} />
+
                     </div>
 
               );

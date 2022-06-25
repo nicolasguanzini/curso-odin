@@ -1,5 +1,7 @@
 import "../styles/Proyectos.css";
 import React, { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan} from "@fortawesome/free-solid-svg-icons";
 
 function Proyectos(props) {
 
@@ -42,7 +44,9 @@ function Proyectos(props) {
                   return (
                     <div onClick={()=> props.setProyectoActual(proy)} className={clase} key={index}>
                        <div  className="proyectoInd">{proy.nombre}</div>
-                       <button onClick={()=> confirmacion(proy)}className="botoneliminar">eliminar</button>
+
+                       <FontAwesomeIcon onClick={()=> confirmacion(proy)} className="editIconProy" icon={faTrashCan} />
+
                     </div>
                   );
         })}

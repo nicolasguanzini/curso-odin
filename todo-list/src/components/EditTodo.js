@@ -1,5 +1,6 @@
 import "../styles/EditTodo.css";
-import React from "react";
+import React, { useEffect } from "react";
+import {format, addDays} from "date-fns";
 
 function EditTodo(props){
 
@@ -14,9 +15,23 @@ function EditTodo(props){
         e.preventDefault();
         const formData = new FormData(e.target);
         let TODONew = formData.get("descTodo");
+
+        props.editarTodo(props.todoActual, TODONew, fechaMuestra, props.todoActual.completado);
+
         setNombreTODO("");
         props.setVisibilidadEditTodo("cont-edit-todo visibility");
     }
+
+    useEffect(
+        ()=>{
+
+            if(props.todoActual){
+                setNombreTODO(props.todoActual.descripcion);
+            setFechaMuestra(props.todoActual.fecha);
+            }
+            
+        }
+        ,[props.todoActual]);
 
     return(
         <div className={props.visibilidadEditTodo}>
@@ -32,7 +47,7 @@ function EditTodo(props){
                 <input onChange={handleFecha} value={fechaMuestra} name="fechaNueva" id="fechaNueva" type="date"  className="input-fecha" required />
 
                 <div className="botones">
-                <button className="botonSubmit" type="submit">Agregar</button>
+                <button className="botonSubmit" type="submit">Editar</button>
                 <button type="button" onClick={()=> props.setVisibilidadEditTodo("cont-edit-todo visibility")}>Cancelar</button>
                 </div>
                 </form>

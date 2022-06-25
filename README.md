@@ -5,3 +5,4 @@ Curso the Odin Project
 - [Etch A Sketch](https://nicolasguanzini.github.io/curso-odin/etch-sketch/)
 - [Calculadora](https://nicolasguanzini.github.io/curso-odin/calculadora-odin/)
 - [Aplicacion del Clima](https://nicolasguanzini.github.io/curso-odin/weather-app/dist/)
+- [Aplicacion de Tareas](https://nicolasguanzini.github.io/curso-odin/todo-list/build/index.html)

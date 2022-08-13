@@ -1,6 +1,6 @@
 const display = document.getElementById("display");
 display.textContent = "0";
-
+//Prueba
 let primerNumero = 0;
 let segundoNumero = 0;
 let operadoractual = "";
